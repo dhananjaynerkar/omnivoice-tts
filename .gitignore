@@ -22,6 +22,7 @@ __pycache__/
 .env.*
 !.env.example
 desktop-companion/auth_token.txt
+github_token.txt
 
 # Editor & OS files
 .DS_Store
