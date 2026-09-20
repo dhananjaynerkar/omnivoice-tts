@@ -6,8 +6,11 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![Tests](https://img.shields.io/badge/Tests-21%20Passed-brightgreen.svg)]()
+[![Use Cases](https://img.shields.io/badge/Documentation-Use%20Cases-orange.svg)](USE_CASES.md)
 
 > A production-quality, privacy-first **Universal Text-to-Speech (TTS) Ecosystem** featuring a **Chrome Manifest V3 Extension**, **Native VS Code Extension**, and **Windows Desktop Companion**. Read highlighted text, articles, documentation, PDFs, code, and Markdown files with zero-lag offline local voices or Google AI (Gemini).
+
+👉 **[Explore Real-World Use Cases & Applications 🎯](USE_CASES.md)**
 
 ---
 
