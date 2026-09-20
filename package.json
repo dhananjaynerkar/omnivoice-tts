@@ -1,0 +1,30 @@
+{
+  "name": "readingx-universal-tts",
+  "version": "1.0.0",
+  "description": "Universal Text-to-Speech Browser Extension and Desktop Companion",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "icons": "node scripts/generate-icons.js"
+  },
+  "keywords": [
+    "text-to-speech",
+    "tts",
+    "chrome-extension",
+    "accessibility",
+    "screen-reader",
+    "gemini",
+    "speech-synthesis"
+  ],
+  "author": "ReadingX Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.280",
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  }
+}

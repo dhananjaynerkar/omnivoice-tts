@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Reader</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-container" role="region" aria-label="Universal Reader Control Panel">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-area">
+        <span class="logo-icon" aria-hidden="true">🔊</span>
+        <h1 class="logo-text">Universal Reader</h1>
+      </div>
+      <div class="header-right">
+        <span id="privacy-badge" class="badge-local" title="Text stays 100% on your device">🔒 Local</span>
+        <button id="btn-open-options" class="icon-btn" aria-label="Open Extension Settings" title="Settings">
+          ⚙
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Actions -->
+    <section class="action-grid" aria-label="Primary Actions">
+      <button id="btn-read-selection" class="btn btn-primary" aria-label="Read selected text aloud">
+        <span class="btn-icon" aria-hidden="true">🔊</span>
+        <span>Read Selection</span>
+      </button>
+      <button id="btn-read-page" class="btn btn-secondary" aria-label="Extract and read entire article">
+        <span class="btn-icon" aria-hidden="true">📖</span>
+        <span>Read Page</span>
+      </button>
+    </section>
+
+    <!-- Playback Status & Controls (when active) -->
+    <section id="status-card" class="status-card" aria-label="Playback Controls">
+      <div class="status-header">
+        <span id="status-label" class="status-label">Ready</span>
+        <span id="progress-counter" class="progress-counter">0 / 0</span>
+      </div>
+      <p id="status-text-preview" class="status-preview">Select text or click Read Page to start.</p>
+      <div class="playback-controls">
+        <button id="btn-skip-prev" class="ctrl-btn" aria-label="Previous sentence" title="Previous">⏮</button>
+        <button id="btn-play-pause" class="ctrl-btn ctrl-btn-main" aria-label="Play or pause speech" title="Play / Pause">▶</button>
+        <button id="btn-stop" class="ctrl-btn" aria-label="Stop speech" title="Stop">⏹</button>
+        <button id="btn-skip-next" class="ctrl-btn" aria-label="Next sentence" title="Next">⏭</button>
+      </div>
+    </section>
+
+    <!-- Voice & Provider Selection -->
+    <section class="form-section">
+      <div class="form-group">
+        <label for="provider-select" class="form-label">TTS Provider</label>
+        <select id="provider-select" class="form-select" aria-label="Text-to-speech provider">
+          <option value="browser">Browser Native (Local & Offline)</option>
+          <option value="google">Google AI Studio (Gemini)</option>
+          <option value="companion">Desktop Companion (Windows)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="voice-group">
+        <label for="voice-select" class="form-label">Voice / Language</label>
+        <select id="voice-select" class="form-select" aria-label="Voice selection">
+          <option value="">Default Voice</option>
+        </select>
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-group">
+          <div class="slider-header">
+            <label for="rate-slider" class="form-label">Speed</label>
+            <span id="rate-value" class="slider-val">1.0x</span>
+          </div>
+          <input type="range" id="rate-slider" min="0.5" max="2.5" step="0.1" value="1.0" class="form-range" aria-label="Speech rate" />
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-header">
+            <label for="volume-slider" class="form-label">Volume</label>
+            <span id="volume-value" class="slider-val">100%</span>
+          </div>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="1" class="form-range" aria-label="Speech volume" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Toggles -->
+    <section class="toggle-section" aria-label="Quick Settings">
+      <label class="toggle-row">
+        <span class="toggle-text">Auto-read selected text</span>
+        <input type="checkbox" id="chk-auto-read" class="toggle-input" />
+        <span class="toggle-slider"></span>
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-text">Highlight text while reading</span>
+        <input type="checkbox" id="chk-highlight" class="toggle-input" />
+        <span class="toggle-slider"></span>
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-text">AI natural speech cleanup</span>
+        <input type="checkbox" id="chk-ai-cleanup" class="toggle-input" />
+        <span class="toggle-slider"></span>
+      </label>
+
+      <label class="toggle-row">
+        <span class="toggle-text">Summarize before reading</span>
+        <input type="checkbox" id="chk-ai-summarize" class="toggle-input" />
+        <span class="toggle-slider"></span>
+      </label>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="shortcut-tip">Tip: Press <kbd>Ctrl+Shift+Space</kbd> to read</span>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>

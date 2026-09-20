@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Universal Reader - Settings & Preferences</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="options-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-icon" aria-hidden="true">🔊</span>
+        <div class="sidebar-title">
+          <h2>Universal Reader</h2>
+          <span class="version-tag">v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" role="tablist" aria-label="Settings Categories">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="general">
+          <span class="tab-icon">⚙</span> General
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="voice">
+          <span class="tab-icon">🎙</span> Voice & Speech
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="ai">
+          <span class="tab-icon">✨</span> Google AI (Gemini)
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="reading">
+          <span class="tab-icon">📖</span> Reading Rules
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="companion">
+          <span class="tab-icon">💻</span> Desktop Companion
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="privacy">
+          <span class="tab-icon">🔒</span> Privacy & Security
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span>Engine: Ready</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-panel">
+      <!-- General Tab -->
+      <section id="tab-general" class="tab-content active" role="tabpanel">
+        <h1 class="page-title">General Preferences</h1>
+        <p class="page-desc">Configure in-page reading behavior, floating player, and interaction triggers.</p>
+
+        <div class="card">
+          <h3 class="card-title">Selection Reading</h3>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-gen-auto-read" class="setting-label">Auto-read selected text</label>
+              <p class="setting-desc">Immediately read highlighted text aloud as soon as you select it with your mouse or keyboard.</p>
+            </div>
+            <input type="checkbox" id="chk-gen-auto-read" class="toggle-switch" />
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-gen-floating-btn" class="setting-label">Show floating "🔊 Read" button</label>
+              <p class="setting-desc">Displays a small floating button next to selected text for quick manual reading.</p>
+            </div>
+            <input type="checkbox" id="chk-gen-floating-btn" class="toggle-switch" />
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">In-Page Player & Highlighting</h3>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-gen-floating-player" class="setting-label">Show floating playback controller</label>
+              <p class="setting-desc">Displays draggable mini-player in the bottom corner of web pages while reading.</p>
+            </div>
+            <input type="checkbox" id="chk-gen-floating-player" class="toggle-switch" />
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-gen-highlight" class="setting-label">Synchronous text highlighting</label>
+              <p class="setting-desc">Visually highlights the current paragraph or sentence on the webpage while being spoken.</p>
+            </div>
+            <input type="checkbox" id="chk-gen-highlight" class="toggle-switch" />
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-gen-autoscroll" class="setting-label">Auto-scroll page to current sentence</label>
+              <p class="setting-desc">Smoothly scrolls the page to keep the actively spoken paragraph in view.</p>
+            </div>
+            <input type="checkbox" id="chk-gen-autoscroll" class="toggle-switch" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Voice Tab -->
+      <section id="tab-voice" class="tab-content" role="tabpanel">
+        <h1 class="page-title">Voice & Audio Synthesis</h1>
+        <p class="page-desc">Select your speech synthesis engine, voice, pitch, and playback rate.</p>
+
+        <div class="card">
+          <div class="form-group">
+            <label for="opt-provider-select" class="form-label">TTS Provider Engine</label>
+            <select id="opt-provider-select" class="form-control">
+              <option value="browser">Browser Native SpeechSynthesis (Local, Offline, 0-API-Key)</option>
+              <option value="google">Google AI Studio (Gemini Preprocessing & Cloud Voices)</option>
+              <option value="companion">Desktop Companion (Windows Native SAPI5 / pyttsx3)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="opt-voice-select" class="form-label">Voice / Speaker</label>
+            <select id="opt-voice-select" class="form-control">
+              <option value="">Loading system voices...</option>
+            </select>
+          </div>
+
+          <div class="slider-grid">
+            <div class="slider-box">
+              <div class="slider-title">
+                <label for="opt-rate-slider">Speed Rate</label>
+                <span id="opt-rate-label">1.0x</span>
+              </div>
+              <input type="range" id="opt-rate-slider" min="0.5" max="3.0" step="0.05" value="1.0" class="range-slider" />
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-title">
+                <label for="opt-pitch-slider">Pitch</label>
+                <span id="opt-pitch-label">1.0</span>
+              </div>
+              <input type="range" id="opt-pitch-slider" min="0.5" max="1.8" step="0.05" value="1.0" class="range-slider" />
+            </div>
+
+            <div class="slider-box">
+              <div class="slider-title">
+                <label for="opt-vol-slider">Volume</label>
+                <span id="opt-vol-label">100%</span>
+              </div>
+              <input type="range" id="opt-vol-slider" min="0" max="1" step="0.05" value="1.0" class="range-slider" />
+            </div>
+          </div>
+
+          <div class="button-row" style="margin-top: 14px;">
+            <button id="btn-test-voice" class="btn btn-secondary">🔊 Test Voice Preview</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Tab -->
+      <section id="tab-ai" class="tab-content" role="tabpanel">
+        <h1 class="page-title">Google AI Studio (Gemini) Integration</h1>
+        <p class="page-desc">Enhance reading with AI speech naturalization, summarization, code explanation, and translation.</p>
+
+        <div class="alert-box security-alert">
+          <strong>🔒 Security & Key Storage Note:</strong>
+          Your Google AI Studio API key is encrypted client-side using Web Crypto AES-GCM and stored only in your local browser instance (<code>chrome.storage.local</code>). It is never sent to any developer server or telemetry service. However, client-side keys are accessible to anyone with physical access to your browser profile.
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Google AI Studio API Key</h3>
+          <div class="form-group">
+            <label for="opt-gemini-key" class="form-label">API Key</label>
+            <div class="input-with-button">
+              <input type="password" id="opt-gemini-key" class="form-control" placeholder="Paste AIzaSy... API key here" />
+              <button id="btn-toggle-key-visibility" class="btn btn-secondary" title="Show/Hide Key">👁</button>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="btn-save-key" class="btn btn-primary">Save API Key</button>
+            <button id="btn-test-key" class="btn btn-secondary">Test Connection</button>
+            <button id="btn-delete-key" class="btn btn-danger">Delete Key</button>
+          </div>
+          <div id="gemini-test-status" class="test-status-msg"></div>
+
+          <div class="form-group" style="margin-top: 16px;">
+            <label for="opt-gemini-model" class="form-label">Gemini Model</label>
+            <select id="opt-gemini-model" class="form-control">
+              <option value="gemini-1.5-flash" selected>Gemini 1.5 Flash (Fast, Recommended for TTS)</option>
+              <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep reasoning, slower)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="opt-ai-mode" class="form-label">Default AI Reading Mode</label>
+            <select id="opt-ai-mode" class="form-control">
+              <option value="natural" selected>Natural Reading (Cleans awkward formatting & symbols)</option>
+              <option value="summarize">Summarize Then Read (Concise spoken executive summary)</option>
+              <option value="explain">Explain Then Read (Explains technical content or code)</option>
+              <option value="translate">Translate Then Read (Translates to selected target language)</option>
+              <option value="direct">Direct Reading (Original raw text unmodified)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="opt-target-lang" class="form-label">Target Translation Language</label>
+            <select id="opt-target-lang" class="form-control">
+              <option value="en">English</option>
+              <option value="hi">Hindi (हिंदी)</option>
+              <option value="mr">Marathi (मराठी)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reading Rules Tab -->
+      <section id="tab-reading" class="tab-content" role="tabpanel">
+        <h1 class="page-title">Technical Content & Reading Rules</h1>
+        <p class="page-desc">Control how equations, programming code, URLs, lists, and pauses are spoken.</p>
+
+        <div class="card">
+          <h3 class="card-title">Code Handling Mode</h3>
+          <div class="form-group">
+            <label for="opt-code-mode" class="form-label">When encountering code snippets:</label>
+            <select id="opt-code-mode" class="form-control">
+              <option value="skip" selected>Skip Code (Omit code blocks to keep reading smooth)</option>
+              <option value="read">Read Code (Read code syntax aloud)</option>
+              <option value="explain">Explain Code with AI (Summarize what the code does)</option>
+            </select>
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-math-norm" class="setting-label">Normalize Mathematical Expressions</label>
+              <p class="setting-desc">Converts equations (e.g. <code>y = mx + c</code>, <code>x^2</code>, fractions, Greek symbols) into clear spoken words.</p>
+            </div>
+            <input type="checkbox" id="chk-math-norm" class="toggle-switch" />
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-url-norm" class="setting-label">Abbreviate Long URLs</label>
+              <p class="setting-desc">Replaces 100-character URLs with clean spoken domain and path summaries instead of letter-by-letter.</p>
+            </div>
+            <input type="checkbox" id="chk-url-norm" class="toggle-switch" />
+          </div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-list-norm" class="setting-label">Natural List Item Speech</label>
+              <p class="setting-desc">Prefixes lists with "Number one...", "Item: ..." to make bullet points easy to follow by ear.</p>
+            </div>
+            <input type="checkbox" id="chk-list-norm" class="toggle-switch" />
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Chunking & Timing</h3>
+          <div class="form-group">
+            <label for="opt-chunk-size" class="form-label">Target Chunk Size (Characters)</label>
+            <input type="number" id="opt-chunk-size" class="form-control" min="100" max="1000" step="50" value="250" />
+            <small class="form-hint">Smaller chunks (~250) prevent browser audio timeouts and improve highlighting accuracy.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="opt-sentence-pause" class="form-label">Sentence Pause Duration (ms)</label>
+            <input type="number" id="opt-sentence-pause" class="form-control" min="50" max="1000" step="50" value="150" />
+          </div>
+
+          <div class="form-group">
+            <label for="opt-para-pause" class="form-label">Paragraph / Heading Pause Duration (ms)</label>
+            <input type="number" id="opt-para-pause" class="form-control" min="100" max="2000" step="100" value="400" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Desktop Companion Tab -->
+      <section id="tab-companion" class="tab-content" role="tabpanel">
+        <h1 class="page-title">Desktop Companion (Windows)</h1>
+        <p class="page-desc">Bridge text-to-speech beyond Chrome into VS Code, Notepad, Microsoft Word, and terminal windows.</p>
+
+        <div class="card">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label for="chk-companion-enabled" class="setting-label">Enable Desktop Companion Bridge</label>
+              <p class="setting-desc">Connects to local companion service on <code>127.0.0.1:8765</code>.</p>
+            </div>
+            <input type="checkbox" id="chk-companion-enabled" class="toggle-switch" />
+          </div>
+
+          <div class="form-group">
+            <label for="opt-companion-port" class="form-label">Companion Port</label>
+            <input type="number" id="opt-companion-port" class="form-control" value="8765" />
+          </div>
+
+          <div class="form-group">
+            <label for="opt-companion-token" class="form-label">Security Authentication Token</label>
+            <input type="password" id="opt-companion-token" class="form-control" placeholder="Token from companion console or auth_token.txt" />
+          </div>
+
+          <div class="button-row">
+            <button id="btn-test-companion" class="btn btn-secondary">Check Companion Status</button>
+          </div>
+          <div id="companion-status-msg" class="test-status-msg"></div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">How to Run the Desktop Companion</h3>
+          <ol class="instructions-list">
+            <li>Open terminal in <code>desktop-companion</code> and activate virtual environment: <code>.\.venv\Scripts\activate</code></li>
+            <li>Run <code>python main.py</code> (or simply double-click <code>run.bat</code>)</li>
+            <li>Copy the generated Security Token and paste it into the field above</li>
+            <li>Select text in <strong>VS Code</strong> or any desktop window and press <kbd>Ctrl+Alt+R</kbd></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Privacy Tab -->
+      <section id="tab-privacy" class="tab-content" role="tabpanel">
+        <h1 class="page-title">Privacy & Security Architecture</h1>
+        <p class="page-desc">Clear disclosure on data flow, zero-telemetry policy, and local isolation guarantees.</p>
+
+        <div class="card">
+          <h3 class="card-title">Data Flow Guarantee</h3>
+          <ul class="privacy-list">
+            <li><strong>Default Offline Mode:</strong> When using the Browser Native TTS provider, 100% of text processing and speech synthesis occurs completely on your device. Zero bytes leave your machine.</li>
+            <li><strong>AI Provider Isolation:</strong> Text is ONLY sent to Google AI Studio if you explicitly choose the Google AI provider or enable AI features.</li>
+            <li><strong>Untrusted Data Defense:</strong> Webpage text is encapsulated in strict boundaries to neutralize prompt injection attacks.</li>
+            <li><strong>Zero Telemetry:</strong> We collect zero analytics, tracking cookies, or usage statistics. Telemetry is permanently disabled.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="options.ts"></script>
+</body>
+</html>
